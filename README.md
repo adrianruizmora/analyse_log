@@ -51,7 +51,7 @@ To run the unittests follow this steps.
 1. Go to the root directory
 
 ```sh
-  cd ~/pathToFile
+  cd ~/pathToDirectory
 ```
 
 2. Run
@@ -67,7 +67,7 @@ To run the unittests follow this steps.
 1. To run the program go to the projects root directory
 
 ```sh
-  cd ~/pathToFile
+  cd ~/pathToFDirectory
 ```
 
 2. Run the program with required arguments
@@ -83,7 +83,7 @@ To run the unittests follow this steps.
 ```
 
 - A file name output.txt will be createad containing the new filtered logs.
-- A parse_log.log will also be created with containing the logs of the script.
+- A parse_log.log will also be created containing the logs of the script.
 
 <!-- CONTACT -->
 
