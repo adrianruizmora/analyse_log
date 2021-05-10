@@ -3,28 +3,35 @@ import functions.functions as f
 
 from collections import OrderedDict
 
-class TestFonctions(unittest.TestCase):
+class TestFunctions(unittest.TestCase):
     """
     Class that test all functions from the functions module
     """
 
-    def setUp(self):
-        """
-        Setup variables that are going to be used by the methods
-        """
-        self.time1 = "09:20"
-        self.time2 = "11:00"
-        self.tasks = {"accompagner": 30, "break": 50, "manger": 25}
-
     def test_time_diff(self):
-        self.assertIsInstance(f.time_diff(self.time1, self.time2), int)
-        self.assertEqual(f.time_diff(self.time1, self.time2), 100)
+        time1 = ("09:20", "11:00") # normal time
+        time2 = ("11:00", "09:20") # negatif time
+        time3 = ("00:00", "00:00") # nul time
+        self.assertEqual(f.time_diff(time1[0], time1[1]), 100)
+        self.assertEqual(f.time_diff(time2[0], time2[1]), -1)
+        self.assertEqual(f.time_diff(time3[0], time3[1]), 0)
 
     def test_percentage(self):
-        self.assertEqual(f.percentage(self.tasks, "accompagner"), 28)
+        tasks1 = {"accompagner": 30, "break": 50, "manger": 25}
+        tasks2 = {"break": 0}
+        self.assertEqual(f.percentage(tasks1, "accompagner"), 28)
+        self.assertEqual(f.percentage(tasks2, "break"), 0)
 
     def test_read_file(self):
-        self.assertIsInstance(f.read_file("planning.log"), OrderedDict)
+        ## diff
+        expected_output = open("expected_output.txt")
+        output = open("output.txt")
+        self.assertListEqual(
+            list(expected_output),
+            list(output)
+        )
+        expected_output.close()
+        output.close()
 
     def test_write_file(self):
         pass

@@ -13,7 +13,7 @@ def time_diff(time1, time2):
     time2 = time2.split(':')
     time1 = int(time1[0])*60 + int(time1[1])
     time2 = int(time2[0])*60 + int(time2[1])
-    return time2 - time1
+    return time2 - time1 if time2 >= time1 else -1
 
 
 def percentage(tasks, task):
@@ -26,7 +26,7 @@ def percentage(tasks, task):
     total = 0
     for task_minutes in tasks.values():
         total += task_minutes
-    return tasks[task]*100//total
+    return tasks[task]*100//total if total !=0 else 0
 
 
 def read_file(filename):
