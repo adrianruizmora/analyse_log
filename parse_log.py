@@ -4,10 +4,10 @@ import setup.arguments as a
 
 def main():
     """
-    Parameters: takes no parameters
-    Reads into a file
     Parses content and writes it to a new .txt file
-    Return none
+    
+    :param: takes no parameters
+    :returns: none
     """
     tasks = read_file(a.filename)
     write_file(tasks)

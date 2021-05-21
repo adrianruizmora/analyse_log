@@ -6,8 +6,11 @@ from setup.logConfig import log
 
 def time_diff(time1, time2):
     """
-    Parameters: takes two strings with time format hh:mm
-    returns: the difference in minutes as an integer.
+    Calculates time difference.
+
+    :param time1: time string on format hh:mm
+    :param time2: time string on format hh:mm
+    :returns: the difference in minutes as an integer.
     """
     time1 = time1.split(':')
     time2 = time2.split(':')
@@ -18,22 +21,25 @@ def time_diff(time1, time2):
 
 def percentage(tasks, task):
     """
-    Parameters: takes a dictionnary that contains {task_name: total_time_of_task}
-    and a specific task as a string
-    returns: the percentage of the total time of the task passed as argument,
-    compare to all the others in the dictionnary.
+    Calculates percentage
+
+    :param tasks: a dictionnary with the format {task_name: total_time_of_task}
+    :param task: name of task as a string
+    :returns: percentage of a task compare to others in the dictionnary
     """
     total = 0
     for task_minutes in tasks.values():
         total += task_minutes
-    return tasks[task]*100//total if total !=0 else 0
+    return tasks[task]*100//total if total > 0 else 0
 
 
 def read_file(filename):
     """
-    Parameter: path to a file
-    returns: a ordered dictionnary with the content
-    of the file parsed.
+    Reads and parse a file.
+
+    :param filename: path to a log file as a string
+    :returns: order dictionnary with the content of the
+    log file parsed.
     """
     tasks = {}
     try:
@@ -65,10 +71,11 @@ def read_file(filename):
 
 def write_file(tasks):
     """
-    Parameters: takes a dictionnary
-    Writes content with a specific format
-    into a file .txt
-    Return: none
+    Writes dictionnary on a file.
+
+    :param tasks:  a dictionnary with the format {task_name: total_time_of_task}
+    :returns: none
+    :writes content of dictionnary on a txt file
     """
     output_file = open("output.txt", "w+")
     log.info(f"output file for filtered logs : output.txt")
